@@ -1,0 +1,37 @@
+<h1>Import</h1>
+
+{% if messages %}
+    {% for message in messages %}
+        <div id="success-message">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<script>
+    setTimeout(function() {
+        var message = document.getElementById('success-message');
+        if (message) {
+            message.style.display = 'none';
+        }
+    }, 2000);
+</script>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <label for="name">Team Name:</label>
+        <input type="text" id="name" name="name" maxlength="75" required>
+    </div>
+    <div>
+        <label for="summary">Summary:</label>
+        <input type="text" id="summary" name="summary" maxlength="200" required>
+    </div>
+    <div>
+        <label for="image">Team Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<a href="{% url 'home' %}">Back to Home</a>

@@ -1,0 +1,12 @@
+<h1>Major League Baseball Teams</h1>
+
+<a href="{% url 'import' %}">Import Teams</a>
+
+{% for team in teams %}
+    <div class="team-card">
+        <h2>{{ team.name }}</h2>
+        <p>{{ team.summary }}</p>
+        <a href="{% url 'edit_team' team.id %}">Edit</a>
+        <br>
+    </div>
+{% endfor %}
